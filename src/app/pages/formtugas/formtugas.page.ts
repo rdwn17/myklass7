@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-// import { MessageService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 import { ToastController } from '@ionic/angular';
 import { ApiServiceService } from 'src/app/api/api-service.service';
 
@@ -9,7 +9,7 @@ import { ApiServiceService } from 'src/app/api/api-service.service';
   selector: 'app-formtugas',
   templateUrl: './formtugas.page.html',
   styleUrls: ['./formtugas.page.scss'],
-  // providers:  [MessageService]
+  providers:  [MessageService]
 })
 export class FormtugasPage implements OnInit {
 

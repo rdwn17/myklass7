@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { MessageService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
 import { ApiServiceService } from 'src/app/api/api-service.service';
 import { ToastController } from '@ionic/angular';
@@ -9,7 +9,7 @@ import { ToastController } from '@ionic/angular';
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.page.html',
   styleUrls: ['./edit-profile.page.scss'],
-  // providers:  [MessageService]
+  providers:  [MessageService]
 })
 export class EditProfilePage implements OnInit {
 
@@ -23,7 +23,7 @@ export class EditProfilePage implements OnInit {
   constructor(
     private api : ApiServiceService,
     private router : Router,
-    // private messageService: MessageService,
+    private messageService: MessageService,
     private http : HttpClient,
     private toastController : ToastController
   ) { }
