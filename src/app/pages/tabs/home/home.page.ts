@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
+import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
 import { ApiServiceService } from 'src/app/api/api-service.service';
 import { JwtService } from 'src/app/jwt.service';
 @Component({
@@ -20,7 +20,7 @@ export class HomePage implements OnInit {
     private router : Router,
     private jwtService: JwtService,
     private api : ApiServiceService,
-    // private geolocation: Geolocation
+    private geolocation: Geolocation
 
     ) { }
 
@@ -54,64 +54,64 @@ export class HomePage implements OnInit {
   }
 
 
-  // async kirimAbsenMasuk(absen:any){
+  async kirimAbsenMasuk(absen:any){
 
 
-  //   try {
-  //         const position: Geoposition = await this.geolocation.getCurrentPosition();
-  //         this.userLatitude = position.coords.latitude;
-  //         this.userLongitude = position.coords.longitude;
-  //         console.log('berhasil mendapatkan latitude : '+this.userLatitude);
-  //         console.log('berhasil mendapatkan longitude : '+this.userLongitude);
-  //         console.log(absen);
-  //       } catch (error) {
-  //         console.error('Error saat mendapatkan lokasi', error);
-  //       }
-  //       const formData = new FormData();
-  //       formData.append("status", "MASUK");
-  //       formData.append("latitude", this.userLatitude);
-  //       formData.append("longitude", this.userLongitude);
-  //       console.log(formData);
+    try {
+          const position: Geoposition = await this.geolocation.getCurrentPosition();
+          this.userLatitude = position.coords.latitude;
+          this.userLongitude = position.coords.longitude;
+          console.log('berhasil mendapatkan latitude : '+this.userLatitude);
+          console.log('berhasil mendapatkan longitude : '+this.userLongitude);
+          console.log(absen);
+        } catch (error) {
+          console.error('Error saat mendapatkan lokasi', error);
+        }
+        const formData = new FormData();
+        formData.append("status", "MASUK");
+        formData.append("latitude", this.userLatitude);
+        formData.append("longitude", this.userLongitude);
+        console.log(formData);
 
-  //       this.api.PostSavePresensi(formData).subscribe( data => {
-  //         console.log("Success ==> "+ JSON.stringify(data));
+        this.api.PostSavePresensi(formData).subscribe( data => {
+          console.log("Success ==> "+ JSON.stringify(data));
 
-  //       },
-  //       err => {
-  //         console.error('Gagal ===> ', err.status);
+        },
+        err => {
+          console.error('Gagal ===> ', err.status);
 
-  //       });
+        });
 
-  // }
+  }
 
-  // async kirimAbsenPulang(absen:any){
+  async kirimAbsenPulang(absen:any){
 
-  //   try {
-  //         const position: Geoposition = await this.geolocation.getCurrentPosition();
-  //         this.userLatitude = position.coords.latitude;
-  //         this.userLongitude = position.coords.longitude;
-  //         console.log('berhasil mendapatkan latitude : '+this.userLatitude);
-  //         console.log('berhasil mendapatkan longitude : '+this.userLongitude);
-  //         console.log(absen);
-  //         this.form = {
-  //           status :"PULANG",
-  //           latitude : this.userLatitude,
-  //           longitude : this.userLongitude,
-  //         }
-  //       } catch (error) {
-  //         console.error('Error saat mendapatkan lokasi', error);
-  //       }
+    try {
+          const position: Geoposition = await this.geolocation.getCurrentPosition();
+          this.userLatitude = position.coords.latitude;
+          this.userLongitude = position.coords.longitude;
+          console.log('berhasil mendapatkan latitude : '+this.userLatitude);
+          console.log('berhasil mendapatkan longitude : '+this.userLongitude);
+          console.log(absen);
+          this.form = {
+            status :"PULANG",
+            latitude : this.userLatitude,
+            longitude : this.userLongitude,
+          }
+        } catch (error) {
+          console.error('Error saat mendapatkan lokasi', error);
+        }
 
-  //       this.api.PostSavePresensi(this.form).subscribe( data => {
-  //         console.log("Success ==> "+ JSON.stringify(data));
+        this.api.PostSavePresensi(this.form).subscribe( data => {
+          console.log("Success ==> "+ JSON.stringify(data));
 
-  //       },
-  //       err => {
-  //         console.error('Gagal ===> ', err.status);
+        },
+        err => {
+          console.error('Gagal ===> ', err.status);
 
-  //       });
+        });
 
-  // }
+  }
 
   checkToken() {
     if (!localStorage.getItem('token')) {
