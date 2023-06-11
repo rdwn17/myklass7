@@ -1,0 +1,33 @@
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar>
+    <ion-button (click)="doBack()" slot="start" fill="clear" size="default">
+      <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-title>Materi</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item-group >
+      <ion-item-divider sticky>
+        <ion-label>
+          Materi
+        </ion-label>
+      </ion-item-divider>
+
+      <ion-item-sliding *ngFor="let key of DataUser; let i = index">
+        <ion-item>
+          <ion-label>
+            <h3>{{ key.judul_tmat }}</h3>
+            <p>
+             {{key.id_materi}} {{ key.mapel.kode_mapel}}
+            </p>
+          </ion-label>
+          <ion-button color="primary" slot="end" [routerLink]="['/tabs/home/listmateri/'+key.mapel+'/detailmateri/'+ key.id_materi]"
+          routerLinkActive="router-link-active">Lihat</ion-button>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="doBack()">
+        <ion-icon color="primary" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Edit Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Ganti Foto Profile</ion-card-title>
+
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+
+        <input type="file" (change)="onFileSelected($event)" />
+
+      </ion-item>
+    </ion-card-content>
+
+    <ion-button (click)="onUpdateFoto()" expand="block">Submit</ion-button>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Ganti Password</ion-card-title>
+
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-input label="Password" [(ngModel)]="form.password" [ngModelOptions]="{standalone: true}" label-placement="floating" fill="outline" placeholder="min 8 karakter"></ion-input>
+      <br>
+      <ion-input label="Confirmation Password" [(ngModel)]="form.confirmation_password" [ngModelOptions]="{standalone: true}" label-placement="floating" fill="outline" placeholder="ketikan lagi password"></ion-input>
+    </ion-card-content>
+
+    <ion-button expand="block" (click)="doChangePassword()">Ganti Password</ion-button>
+  </ion-card>
+</ion-content>

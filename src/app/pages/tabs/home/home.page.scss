@@ -1,0 +1,115 @@
+//<ion-buttons slot="start">
+//<ion-menu-button menu="main-menu">
+
+//</ion-menu-button>
+//</ion-buttons>
+ion-header {
+    ion-toolbar, ion-item{
+      --background: #f1f5f8;
+      background: #f1f5f8;
+      padding: 0 10px;
+      font-weight: 700;
+      text-align: center;
+      p,h3{
+        text-align: left;
+      }
+
+
+
+    }
+
+    ion-toolbar{
+      .bordered {
+        --border-radius: 10px;
+        --box-shadow: 5px 5px 10px #d1d1d1, 5px 5px 10px #FFFFFF;
+      }
+    }
+
+    ion-item {
+      h3 {
+        font-weight: 700;
+        font-size: 14px;
+      }
+
+      p {
+        font-weight: 500;
+        font-size: 14px;
+      }
+
+      ion-avatar {
+        --border-radius: 40%;
+      }
+    }
+  }
+
+  ion-content {
+    ion-card{
+      border-radius: 3%;
+      background-color: #005a9652;
+      ion-card-header{
+        ion-item{
+          border-radius: 3%;
+          text-align: left;
+          ion-label{
+            padding-left: 10px;
+          }
+        }
+      }
+      ion-card-content{
+
+        padding-bottom: 10px;
+
+      }
+      img {
+        border-radius: 50%;
+      }
+    }
+
+    // .jadwal{
+    //   ion-card{
+    //     border-radius: 20px;
+    //     text-align: center;
+    //     padding: 10px 10px 10px 10px ;
+    //     ion-list{
+    //       background-color: #6497b1;
+    //     }
+
+    //   }
+    // }
+    // background-color: #6497b1;
+    // background: #6497b1;
+    // .tugas{
+    //   h3{
+    //     text-align: center;
+    //   }
+    //   h2,p{
+    //     padding-left: 10px;
+
+    //   }
+    // }
+
+    // background-color: #52a1de;
+    // background: #52a1de;
+    // ion-col {
+    //   border-radius: 10%;
+    //   //background-color: #fff;
+    //   background-color: #005b96;
+    //   border: solid 2px #fff;
+    //   color: #fff;
+    //   text-align: center;
+
+    //   img{
+    //     border-radius: 10%;
+    //   }
+    // }
+    // h2 {
+    //   text-align: left;
+    //   padding-left: 20px;
+    // }
+  }
+
+  ion-footer{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+

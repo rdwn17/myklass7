@@ -1,0 +1,38 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-margin">
+  <ion-card>
+    <ion-img src="assets/images/login.jpg"></ion-img>
+    <h1>Selamat Datang</h1>
+  </ion-card>
+
+  <ion-card-content>
+
+    <div class="wrapform">
+      <ion-item>
+        <ion-icon name="mail-outline"></ion-icon>
+        <ion-input [(ngModel)]="form.nis" [ngModelOptions]="{standalone: true}" type="text" name="email" placeholder="  nis" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="lock-closed-outline"></ion-icon>
+        <ion-input [(ngModel)]="form.password" [ngModelOptions]="{standalone: true}" type="password" name="password" placeholder="  ********" ></ion-input>
+      </ion-item>
+
+    </div>
+    <!-- <div class="password_forgot">
+      <ion-button fill="clear" class="ion-no-padding">LupaPassword?</ion-button>
+    </div> -->
+    <div class="sign-btn-wrap">
+      <ion-button (click)="doLogin()" shape="round" fill="solid" class="sign-button">Masuk</ion-button>
+    </div>
+
+
+
+  </ion-card-content>
+
+
+</ion-content>

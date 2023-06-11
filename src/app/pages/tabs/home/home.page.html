@@ -1,0 +1,173 @@
+<ion-header class="ion-no-border">
+  <div class="judul">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+
+        <ion-icon size="large" color="primary" name="Home"></ion-icon>
+
+    </ion-buttons>
+    My School App
+    <ion-buttons slot="end">
+      <ion-button (click)="doLogout()" class="bordered" fill="solid" color="light">
+        <ion-icon color="primary" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  </div>
+
+  <ion-item *ngIf="item" line="none">
+    <ion-avatar slot="end">
+      <img alt="Foto Profile" src="{{item.foto}}">
+    </ion-avatar>
+    <ion-label>
+      <p>Hello</p>
+      <h3>Selamat Datang, {{item.name_mus}}</h3>
+
+    </ion-label>
+  </ion-item>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+      <ion-item-group >
+        <ion-item-divider sticky>
+          <ion-label>
+            Mapel
+          </ion-label>
+        </ion-item-divider>
+
+        <ion-item-sliding *ngFor="let key of DataUser; let i = index">
+          <ion-item>
+            <ion-label>
+              <h3>{{ key.nama_mapel }} - {{ key.nama_guru}}</h3>
+              <p>
+                {{ key.nama_kelas }} - {{ key.peiode}}
+              </p>
+            </ion-label>
+            <ion-button color="primary" slot="end" [routerLink]="['/tabs/home/listmateri/',key.id_mapel]"
+            routerLinkActive="router-link-active">Lihat</ion-button>
+          </ion-item>
+        </ion-item-sliding>
+      </ion-item-group>
+    </ion-list>
+
+  <ion-list>
+    <ion-item-group >
+      <ion-item-divider sticky>
+        <ion-label>
+          Tugas
+        </ion-label>
+      </ion-item-divider>
+
+      <ion-item-sliding *ngFor="let key of DataTugas; let i = index">
+        <ion-item >
+          <ion-label>
+            <h3>{{key.kelas}} -- {{key.deskripsi_tugas}}</h3>
+            <p>
+              DL &mdash; {{key.batas_waktu}}
+            </p>
+          </ion-label>
+          <ion-button color="primary" slot="start" [routerLink]="['/formtugas/',key.id_tugas]"
+            routerLinkActive="router-link-active">Lihat
+          </ion-button>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-item-group>
+  </ion-list>
+
+  <!-- <ion-fab slot="fixed" vertical="bottom" horizontal="end" #fab>
+    <ion-fab-button>
+      <ion-icon name="people-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button id="presensi-keluar" (click)="kirimAbsenPulang(['PULANG']);" color="danger">
+        <ion-icon name="exit-outline"></ion-icon>
+        <ion-toast trigger="presensi-keluar" message="Data Keluar Anda Telah Disimpan" [duration]="3000" icon="cloud-done-outline"></ion-toast>
+      </ion-fab-button>
+      <ion-fab-button id="presensi-masuk" (click)="kirimAbsenMasuk(['MASUK']);" color="success">
+        <ion-icon name="enter-outline"></ion-icon>
+        <ion-toast trigger="presensi-masuk" message="Data Masuk Anda Telah Disimpan" [duration]="3000" icon="cloud-done-outline"></ion-toast>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab> -->
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-label> Silahkan Absen Disini </ion-label>
+    <ion-icon slot="end" size="large" name="arrow-up-circle-outline"></ion-icon>
+  </ion-toolbar>
+</ion-footer>
+
+<!--
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">home</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div class="jadwal">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Senin</ion-card-title>
+        <ion-card-subtitle>Jadwal Mata Pelajaran dan Ruangan</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-label>
+              <h3>Matematika</h3>
+              <p>
+                07;00 &mdash; 09:00 : Ruang D305
+              </p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h3>Kimia</h3>
+              <p>
+                09;30 &mdash; 11:30 : Ruang D204
+              </p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h3>Fisika</h3>
+              <p>
+                13:30 &mdash; 15:30 : Ruang D305
+              </p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div class="kembar">
+  <ion-grid>
+    <ion-row>
+      <ion-col id="open-materi" size-md="6">
+        <ion-picker trigger="open-materi" [columns]="pickerColumns1" [buttons]="pickerButtons1"></ion-picker>
+        <img src="assets/images/materi.jpg">
+        Materi
+      </ion-col>
+      <ion-col id="open-nilai" size-md="6">
+        <ion-picker trigger="open-nilai" [columns]="pickerColumns3" [buttons]="pickerButtons3"></ion-picker>
+        <img src="assets/images/nilai.jpg">
+        Nilai
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  </div>
+  <div class="tugas">
+    <h3>Tugas</h3>
+    <ion-item button detail="true">
+      <ion-label>
+        <h2>Matematika - Al Jabar</h2>
+        <p>DL : 20:00 pm Wednesday 12 Mei 2023</p>
+      </ion-label>
+    </ion-item>
+  </div>
+  <ion-button fill="outline" expand="block"><ion-icon slot="start" name="help-circle-outline"></ion-icon>butuh bantuan?</ion-button>
+  <ion-button fill="outline" expand="block"><ion-icon slot="start" name="information-circle"></ion-icon>kritik dan saran</ion-button>
+  <ion-button fill="outline" expand="block"><ion-icon slot="start" name="logo-google-playstore"></ion-icon>Beri Kami Ulasan</ion-button>
+
+</ion-content> -->

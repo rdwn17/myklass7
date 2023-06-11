@@ -1,0 +1,43 @@
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Detail Tugas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<div  class="ion-padding">
+
+    <ion-card *ngIf="DataUser" >
+      <ion-card-header>
+        <ion-card-title>Deskripsi Tugas</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label>
+            {{DataUser.deskripsi_tugas}}
+          </ion-label>
+
+        </ion-item>
+        <!-- <ion-item>
+          <ion-icon slot="start" name="calendar"></ion-icon>
+          <ion-label>Waktu Pengumpulan Tugas<br><p>Monday, 22 May 2023, 08:00 AM</p></ion-label>
+        </ion-item> -->
+        <ion-input [(ngModel)]="form.desk" [ngModelOptions]="{standalone: true}" label="Text Online" label-placement="floating" fill="outline" placeholder="Enter text"></ion-input>
+        <ion-item>
+
+          <input type="file" (change)="onFileSelected($event)" />
+          <ion-button fill="clear" >
+            <ion-icon slot="start" name="attach"></ion-icon>
+            Pilih File
+          </ion-button>
+        </ion-item>
+
+        <ion-item>
+          <ion-button (click)="onUpload()"  expand="full">Kirim</ion-button>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+</div>
+</ion-content>

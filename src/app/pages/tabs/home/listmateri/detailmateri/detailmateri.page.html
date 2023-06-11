@@ -1,0 +1,32 @@
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar>
+    <ion-button (click)="doBack()" slot="start" fill="clear" size="default">
+      <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-title>Detail Materi</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="DataUser" class="ion-padding">
+    <h1>{{DataUser.judul_materi}}</h1>
+    <span>{{DataUser.mapel.kode_mapel}} </span>
+    <p>{{DataUser.deskripsi_materi}} </p>
+    <ion-item>
+      <ion-label>File Lampiran</ion-label>
+      <ion-button (click)="simpan(DataUser.id_materi)" slot="end">Buka</ion-button>
+    </ion-item>
+    <img alt="Gambar Materi" src="{{ DataUser.gambar_materi }}" />
+
+
+      <!-- <iframe
+        width="100%"
+        height="100%"
+        frameborder="0"
+        style="border:0"
+        src="{{DataUser.file_materi}}"
+        allowfullscreen
+      ></iframe> -->
+
+  </div>
+</ion-content>

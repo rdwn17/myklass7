@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // ApiURL : 'localhost:8000'
+
+  ApiURL : 'https://myschool.jamaahcoding.my.id'
 };
 
 /*
