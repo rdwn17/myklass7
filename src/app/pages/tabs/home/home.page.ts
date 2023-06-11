@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
+import { Geolocation } from '@capacitor/geolocation';
 import { ApiServiceService } from 'src/app/api/api-service.service';
 import { JwtService } from 'src/app/jwt.service';
 @Component({
@@ -58,9 +58,9 @@ export class HomePage implements OnInit {
 
 
     try {
-          const position: Geoposition = await this.geolocation.getCurrentPosition();
-          this.userLatitude = position.coords.latitude;
-          this.userLongitude = position.coords.longitude;
+      const position = await Geolocation.getCurrentPosition();
+      this.userLatitude = position.coords.latitude;
+      this.userLongitude = position.coords.longitude;
           console.log('berhasil mendapatkan latitude : '+this.userLatitude);
           console.log('berhasil mendapatkan longitude : '+this.userLongitude);
           console.log(absen);
@@ -87,9 +87,9 @@ export class HomePage implements OnInit {
   async kirimAbsenPulang(absen:any){
 
     try {
-          const position: Geoposition = await this.geolocation.getCurrentPosition();
-          this.userLatitude = position.coords.latitude;
-          this.userLongitude = position.coords.longitude;
+      const position = await Geolocation.getCurrentPosition();
+      this.userLatitude = position.coords.latitude;
+      this.userLongitude = position.coords.longitude;
           console.log('berhasil mendapatkan latitude : '+this.userLatitude);
           console.log('berhasil mendapatkan longitude : '+this.userLongitude);
           console.log(absen);
