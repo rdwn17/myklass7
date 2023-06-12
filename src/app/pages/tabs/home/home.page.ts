@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Geolocation } from '@capacitor/geolocation';
 import { ApiServiceService } from 'src/app/api/api-service.service';
 import { JwtService } from 'src/app/jwt.service';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -20,9 +21,43 @@ export class HomePage implements OnInit {
     private router : Router,
     private jwtService: JwtService,
     private api : ApiServiceService,
-    private geolocation: Geolocation
+    private alert : AlertController
+    // private geolocation: Geolocation
 
     ) { }
+    async showLogoutConfirmation() {
+      const alert = await this.alert.create({
+        header: 'Konfirmasi Logout',
+        message: 'Apakah Anda yakin ingin keluar?',
+        buttons: [
+          {
+            text: 'Batal',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: () => {
+              // Jika pengguna memilih tombol "Batal"
+            }
+          }, {
+            text: 'Logout',
+            handler: () => {
+              // Jika pengguna memilih tombol "Logout"
+              this.doLogout();
+            }
+          }
+        ]
+      });
+
+      await alert.present();
+    }
+    private async presentAlert(title : any, message : any) {
+      const alert = await this.alert.create({
+        header: 'Status Absen',
+        subHeader: title,
+        message: message,
+        buttons: ['OK']
+      });
+      await alert.present();
+  }
 
     DataUser : any;
     DataTugas: any;
@@ -74,14 +109,17 @@ export class HomePage implements OnInit {
         console.log(formData);
 
         this.api.PostSavePresensi(formData).subscribe( data => {
+          const jsonResponse = JSON.parse(JSON.stringify(data));
+          console.log(jsonResponse.data.message);
+          // console.log("Success ==> "+ JSON.stringify(data));
+          console.log(jsonResponse.message);
+          this.presentAlert("MASUK", jsonResponse.data.message );
           console.log("Success ==> "+ JSON.stringify(data));
-
         },
         err => {
           console.error('Gagal ===> ', err.status);
 
         });
-
   }
 
   async kirimAbsenPulang(absen:any){
@@ -103,6 +141,8 @@ export class HomePage implements OnInit {
         }
 
         this.api.PostSavePresensi(this.form).subscribe( data => {
+          const jsonResponse = JSON.parse(JSON.stringify(data));
+          this.presentAlert("PULANG", jsonResponse.data.message );
           console.log("Success ==> "+ JSON.stringify(data));
 
         },

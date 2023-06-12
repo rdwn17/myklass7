@@ -8,7 +8,7 @@
     </ion-buttons>
     My School App
     <ion-buttons slot="end">
-      <ion-button (click)="doLogout()" class="bordered" fill="solid" color="light">
+      <ion-button (click)="showLogoutConfirmation()" class="bordered" fill="solid" color="light">
         <ion-icon color="primary" name="log-out-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -66,6 +66,8 @@
             <p>
               DL &mdash; {{key.batas_waktu}}
             </p>
+            <!-- <br> -->
+            <p>{{key.status}}</p>
           </ion-label>
           <ion-button color="primary" slot="start" [routerLink]="['/formtugas/',key.id_tugas]"
             routerLinkActive="router-link-active">Lihat
@@ -82,12 +84,10 @@
     <ion-fab-list side="top">
       <ion-fab-button id="presensi-keluar" (click)="kirimAbsenPulang(['PULANG']);" color="danger">
         <ion-icon name="exit-outline"></ion-icon>
-        <ion-toast trigger="presensi-keluar" message="Data Keluar Anda Telah Disimpan" [duration]="3000" icon="cloud-done-outline"></ion-toast>
-      </ion-fab-button>
+     </ion-fab-button>
       <ion-fab-button id="presensi-masuk" (click)="kirimAbsenMasuk(['MASUK']);" color="success">
         <ion-icon name="enter-outline"></ion-icon>
-        <ion-toast trigger="presensi-masuk" message="Data Masuk Anda Telah Disimpan" [duration]="3000" icon="cloud-done-outline"></ion-toast>
-      </ion-fab-button>
+ </ion-fab-button>
     </ion-fab-list>
   </ion-fab>
 </ion-content>

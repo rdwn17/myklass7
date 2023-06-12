@@ -88,6 +88,7 @@ export class EditProfilePage implements OnInit {
 
         toast.present();
         this.router.navigateByUrl('tabs/profile')
+        window.location.reload();
       });
   }
 
